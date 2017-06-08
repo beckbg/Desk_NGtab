@@ -13,16 +13,28 @@ function onCompleted(details) {
     chrome.tabs.get(details.tabId, function(tab) {
       if (typeof tab == 'undefined') return null;
       if (tab.url.match(/^view-source:/)) return null;
-
-      chrome.tabs.getAllInWindow(tab.windowId, function(tabs) {
-        var duplicates = tabs.filter(function(t) {
-          return compareUrls(t.url, details.url) && t.id != tab.id && !t.pinned && t.status == 'complete';
-        });
-        if (duplicates.length) {
-          removeDuplicates(tab, duplicates);
-        }
-      });
-
+	  if (tab.url.match(/^https:\/\/support.ted.com\/web\/agent\/){
+         chrome.tabs.getAllInWindow(tab.windowId, function(tabs) {
+           var duplicates = tabs.filter(function(t) {
+             return t.url.match(/^https:\/\/support.ted.com\/web\/agent\/) && t.id != tab.id && !t.pinned && t.status == 'complete';
+           });
+           
+           if (duplicates.length) {
+             removeDuplicates(tab, duplicates);
+           }
+         });
+      //} else if(false/*was going to test for classic, but it's not very common*/){
+      } else {
+         chrome.tabs.getAllInWindow(tab.windowId, function(tabs) {
+           var duplicates = tabs.filter(function(t) {
+             return compareUrls(t.url, details.url) && t.id != tab.id && !t.pinned && t.status == 'complete';
+           });
+           
+           if (duplicates.length) {
+             removeDuplicates(tab, duplicates);
+           }
+         });
+      }
     });
   }
 }

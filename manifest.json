@@ -1,6 +1,5 @@
 {
-  "name": "Unique Tabs",
-  "description": "Upon opening a new tab or navigating to a new page, this extension closes any earlier, duplicate tabs in the same window.",
+  "description": "Upon opening/navigating to a new case in the NextGen agent view of Desk, this extension closes any earlier Next Gen tabs in the same window. Modified from Joey Aghion's public Unique Tabs code for private use at TED. Includes original unique tab functionality (bonus!) for now.",
   "version": "0.6",
   "background": {
     "scripts": ["background.js"]
