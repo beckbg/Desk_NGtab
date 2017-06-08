@@ -1,4 +1,5 @@
 {
+  "name": "Just One Desk Next Gen Agent Tab for TED",
   "description": "Upon opening/navigating to a new case in the NextGen agent view of Desk, this extension closes any earlier Next Gen tabs in the same window. Modified from Joey Aghion's public Unique Tabs code for private use at TED. Includes original unique tab functionality (bonus!) for now.",
   "version": "0.6",
   "background": {

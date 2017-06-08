@@ -13,10 +13,10 @@ function onCompleted(details) {
     chrome.tabs.get(details.tabId, function(tab) {
       if (typeof tab == 'undefined') return null;
       if (tab.url.match(/^view-source:/)) return null;
-	  if (tab.url.match(/^https:\/\/support.ted.com\/web\/agent\/){
+	  if (tab.url.match(/^https:\/\/support.ted.com\/web\/agent\//)){
          chrome.tabs.getAllInWindow(tab.windowId, function(tabs) {
            var duplicates = tabs.filter(function(t) {
-             return t.url.match(/^https:\/\/support.ted.com\/web\/agent\/) && t.id != tab.id && !t.pinned && t.status == 'complete';
+             return t.url.match(/^https:\/\/support.ted.com\/web\/agent\//) && t.id != tab.id && !t.pinned && t.status == 'complete';
            });
            
            if (duplicates.length) {
